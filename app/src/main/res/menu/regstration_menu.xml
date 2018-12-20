@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/registration"
+        android:checkable="true"
+        android:enabled="true"
+        android:title="@string/registration_map"
+        android:visible="true"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/satellite_map"
+        android:title="@string/satellite_map"
+        app:showAsAction="never" />
+
+</menu>

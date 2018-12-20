@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "823913023176",
+    "firebase_url": "https://quickaidforregistration.firebaseio.com",
+    "project_id": "quickaidforregistration",
+    "storage_bucket": "quickaidforregistration.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823913023176:android:bdd6ab56a5d2598f",
+        "android_client_info": {
+          "package_name": "com.example.raifu.mapforinto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823913023176-fomg4eaq5gvkrcu9jnbj12jhkr4lt44c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ7KvcD9FTbwo_Q4hR13Q_E0e6W1pLHvg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
