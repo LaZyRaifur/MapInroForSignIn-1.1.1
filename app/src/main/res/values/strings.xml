@@ -70,4 +70,43 @@
     <string name="email_id">Email ID</string>
     <string name="welcome_to_QuickAID">Welcome to Quick AID.\n Already Registered User Login here..</string>
     <string name="dont_have_account">Don\'t have an Account?</string>
+
+    <!--Navigation-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+
+    <!-- Navigation Drawer menu labels -->
+    <string name="nav_profile">My Profile</string>
+    <string name="nav_accept_request">Accept request</string>
+    <string name="nav_raised_request">My Raised Request</string>
+    <string name="nav_donation_history">Donation History</string>
+    <string name="nav_past_request">Past Request</string>
+    <string name="nav_about_us">About Us</string>
+    <string name="nav_hospital_blood_bank">Hospital and Blood Banks</string>
+    <string name="nav_become_a_volunteer">Become a volunteer</string>
+    <string name="nav_refer_friend">Refer Friend</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_feedback">FeedBack</string>
+    <string name="nav_our_team">Our Teams</string>
+    <string name="nav_rate_us">Rate us</string>
+    <string name="nav_privacy">Privacy Policy</string>
+
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles">
+        <item>My Profile</item>
+        <item>Accept request</item>
+        <item>My Raised Request</item>
+        <item>Donation History</item>
+        <item>Past Request</item>
+    </string-array>
+
+    <string name="activity_title_about_us">About Us</string>
+    <string name="activity_title_privacy_policy">Privacy Policy</string>
+    <string name="action_clear_all">Clear All</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_mark_all_read">Mark All as Read</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

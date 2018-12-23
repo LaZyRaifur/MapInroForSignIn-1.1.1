@@ -45,14 +45,25 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity.DashBoard"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!--android:theme="@style/AppTheme.NoActionBar" />-->
         <activity
             android:name=".LoginActivity.SignUp"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity.Reset"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity
+            android:name=".navigationActivity.NavigationMainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".navigationActivity.NavigationAboutUs"
+            android:label="@string/activity_title_about_us" />
+        <activity
+            android:name=".navigationActivity.NavigationPrivacy"
+            android:label="@string/activity_title_privacy_policy" />
 
     </application>
 

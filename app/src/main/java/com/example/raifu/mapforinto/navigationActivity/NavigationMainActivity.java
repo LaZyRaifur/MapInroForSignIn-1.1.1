@@ -1,9 +1,9 @@
-package com.example.raifu.mapforinto.LoginActivity;
+package com.example.raifu.mapforinto.navigationActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -17,10 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,20 +25,15 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.raifu.mapforinto.NavigationOthersActivity.CircleTransform;
 import com.example.raifu.mapforinto.R;
-import com.example.raifu.mapforinto.navigationActivity.NavigationAboutUs;
-import com.example.raifu.mapforinto.navigationActivity.NavigationMainActivity;
-import com.example.raifu.mapforinto.navigationActivity.NavigationPrivacy;
 import com.example.raifu.mapforinto.navigationFragment.HomeFragment;
 import com.example.raifu.mapforinto.navigationFragment.MovieFragment;
 import com.example.raifu.mapforinto.navigationFragment.NotificationFragment;
 import com.example.raifu.mapforinto.navigationFragment.PhotosFragment;
 import com.example.raifu.mapforinto.navigationFragment.SettingsFragment;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-public class DashBoard extends AppCompatActivity {
+import java.util.logging.Handler;
+
+public class NavigationMainActivity extends AppCompatActivity {
     //urls to load navigation header background image
     //and profiles name
     private static final String urlNavHeaderBg = "http://api.androidhive.info/images/nav-menu-header-bg.jpg";
@@ -55,24 +47,6 @@ public class DashBoard extends AppCompatActivity {
     //index to identify current nav menu item
     public static int navItemIndex = 0;
     public static String CURRENT_TAG = TAG_HOME;
-    private Button btnChangePassword, btnRemoveUser, changePassword, remove, signOut;
-    private TextView email;
-    ////////////////////////this listener will be called when there  is change in firebase user season////////////////////////////////////
-    FirebaseAuth.AuthStateListener authLisener = new FirebaseAuth.AuthStateListener() {
-        @Override
-        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-            FirebaseUser user = firebaseAuth.getCurrentUser();
-            if (user == null) {
-                //user auth state is changed -user is null
-                //launch login activity
-                startActivity(new Intent(DashBoard.this, Login.class));
-                finish();
-            } else {
-                setDataToView(user);
-            }
-        }
-    };
-    //////////////////////////////Navigation Drawer//////////////////////////////////////////////////////
     private NavigationView navigationView;
     private DrawerLayout drawer;
     private View navHeader;
@@ -82,29 +56,20 @@ public class DashBoard extends AppCompatActivity {
     private FloatingActionButton fab;
     //toolbar title respected to select nav menu item
     private String[] activityTitles;
+
     //flag to load home fragment when users press back key
     private boolean shouldLoadHomeFragOnBackPress = true;
     private android.os.Handler mHandler;
 
-
-    ///////////////DashBoard implement/////////////////////
-
-    private EditText oldEmail, password, newPassword;
-    private ProgressBar progressBar;
-    private FirebaseAuth auth;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dash_board);
-
-        ///Navigation implement////////
+        setContentView(R.layout.navigation_activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //handler//
-
         mHandler = new android.os.Handler();
+
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -116,6 +81,7 @@ public class DashBoard extends AppCompatActivity {
         txtWebsite = (TextView) navHeader.findViewById(R.id.website);
         imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
         imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
+
         //load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
@@ -138,130 +104,7 @@ public class DashBoard extends AppCompatActivity {
             CURRENT_TAG = TAG_HOME;
             loadHomeFragment();
         }
-        /////////////////Firebase Authentication/////////////////////
-        //get firebase auth instance
-        auth = FirebaseAuth.getInstance();
-        // email = (TextView) findViewById(R.id.useremail);
 
-        //get current user
-        //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        //setDataToView(user);
-
-        authLisener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                if (user == null) {
-                    startActivity(new Intent(DashBoard.this, Login.class));
-                    finish();
-                }
-            }
-        };
-//
-//       // btnChangePassword = (Button) findViewById(R.id.change_password_button);
-//       // btnRemoveUser = (Button) findViewById(R.id.remove_user_button);
-//       // changePassword = (Button) findViewById(R.id.changePass);
-//
-//        //remove = (Button) findViewById(R.id.remove);
-//       // signOut = (Button) findViewById(R.id.sign_out);
-//
-//       // oldEmail = (EditText) findViewById(R.id.old_email);
-//        //password = (EditText) findViewById(R.id.password);
-//       // newPassword = (EditText) findViewById(R.id.newPassword);
-//
-//        oldEmail.setVisibility(View.GONE);
-//
-//        password.setVisibility(View.GONE);
-//        newPassword.setVisibility(View.GONE);
-//        changePassword.setVisibility(View.GONE);
-//
-//        remove.setVisibility(View.GONE);
-//
-//        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-//
-//        if (progressBar != null) {
-//            progressBar.setVisibility(View.GONE);
-//        }
-//
-//        btnChangePassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                oldEmail.setVisibility(View.GONE);
-//                password.setVisibility(View.GONE);
-//                newPassword.setVisibility(View.VISIBLE);
-//                changePassword.setVisibility(View.VISIBLE);
-//
-//                remove.setVisibility(View.GONE);
-//            }
-//        });
-//
-//        changePassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                progressBar.setVisibility(View.VISIBLE);
-//
-//                if (user != null && !newPassword.getText().toString().trim().equals("")) {
-//                    if (newPassword.getText().toString().trim().length() < 6) {
-//                        newPassword.setError("Password too short ,enter minimum 6 characters");
-//                        progressBar.setVisibility(View.GONE);
-//                    } else {
-//                        user.updatePassword(newPassword.getText().toString().trim())
-//                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                    @Override
-//                                    public void onComplete(@NonNull Task<Void> task) {
-//                                        if (task.isSuccessful()) {
-//                                            Toast.makeText(DashBoard.this, "password is updated. sign in with new password!", Toast.LENGTH_SHORT).show();
-//                                            signOut();
-//                                            progressBar.setVisibility(View.GONE);
-//                                        } else {
-//                                            Toast.makeText(DashBoard.this, "Failed to update password", Toast.LENGTH_SHORT).show();
-//                                            progressBar.setVisibility(View.GONE);
-//                                        }
-//                                    }
-//                                });
-//                    }
-//                } else if (newPassword.getText().toString().trim().equals("")) {
-//                    newPassword.setError("Enter password");
-//                    progressBar.setVisibility(View.GONE);
-//
-//                }
-//            }
-//        });
-
-//
-//        //Firebase///////
-//        btnRemoveUser.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                progressBar.setVisibility(View.VISIBLE);
-//
-//                if (user != null) {
-//                    user.delete()
-//                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//                                    if (task.isSuccessful()) {
-//                                        Toast.makeText(DashBoard.this, "Your profile is deleted :( Create a account now!", Toast.LENGTH_SHORT).show();
-//                                        startActivity(new Intent(DashBoard.this, SignUp.class));
-//                                        finish();
-//                                        progressBar.setVisibility(View.GONE);
-//                                    } else {
-//                                        Toast.makeText(DashBoard.this, "Failed to delete your account", Toast.LENGTH_SHORT).show();
-//                                        progressBar.setVisibility(View.GONE);
-//                                    }
-//                                }
-//                            });
-//                }
-//            }
-//        });
-//
-//        signOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                signOut();
-//            }
-//        });
 
     }
 
@@ -415,19 +258,19 @@ public class DashBoard extends AppCompatActivity {
                         navItemIndex = 3;
                         CURRENT_TAG = TAG_NOTIFICATION;
                         break;
-                    case R.id.nav_PastRequest:
+                    case R.id.nav_settings:
                         navItemIndex = 4;
                         CURRENT_TAG = TAG_SETTING;
                         break;
 
                     case R.id.nav_about_us:
                         //launching new intent instead of loading fragment
-                        startActivity(new Intent(DashBoard.this, NavigationAboutUs.class));
+                        startActivity(new Intent(NavigationMainActivity.this, NavigationAboutUs.class));
                         drawer.closeDrawers();
                         return true;
                     case R.id.nav_privacy:
                         //launching new intent instead of loading fragment
-                        startActivity(new Intent(DashBoard.this, NavigationPrivacy.class));
+                        startActivity(new Intent(NavigationMainActivity.this, NavigationPrivacy.class));
                         drawer.closeDrawers();
                         return true;
 
@@ -528,8 +371,6 @@ public class DashBoard extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            signOut();
-
             Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -559,54 +400,5 @@ public class DashBoard extends AppCompatActivity {
         }
     }
 
-    ///////////////////Navigation part Ending in upper//////////////////////
-
-    @SuppressLint("SetTextI18n")
-    private void setDataToView(FirebaseUser user) {
-
-        email.setText("User Email: " + user.getEmail());
-
-
-    }
-
-    //sign out method
-    public void signOut() {
-        auth.signOut();
-
-        //this seasion will be called when there is change in firebase user seasion
-        FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user == null) {
-                    // user auth state is changed - user is null
-                    // launch login activity
-                    startActivity(new Intent(DashBoard.this, Login.class));
-                    finish();
-                }
-            }
-        };
-    }
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        progressBar.setVisibility(View.GONE);
-//    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        auth.addAuthStateListener(authLisener);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        if (authLisener != null) {
-            auth.removeAuthStateListener(authLisener);
-        }
-    }
 
 }

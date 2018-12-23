@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="User panel">
+        <menu android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_myProfile"
+                android:icon="@drawable/ic_profile_24dp"
+                android:title="@string/nav_profile" />
+            <item
+                android:id="@+id/nav_AcceptRequest"
+                android:icon="@drawable/accept_request"
+                android:title="@string/nav_accept_request" />
+            <item
+                android:id="@+id/nav_MyRaisedRequest"
+                android:icon="@drawable/raised_request"
+                android:title="@string/nav_raised_request" />
+
+            <item
+                android:id="@+id/nav_DonationHistory"
+                android:icon="@drawable/donation_history"
+                android:title="@string/nav_donation_history" />
+
+            <item
+                android:id="@+id/nav_PastRequest"
+                android:icon="@drawable/past_request"
+                android:title="@string/nav_past_request" />
+        </menu>
+    </item>
+
+    <item android:title="utility">
+        <menu>
+            <item
+                android:id="@+id/nav_hospital_blood_bank"
+                android:icon="@drawable/hospital_blood_banks"
+                android:title="@string/nav_hospital_blood_bank" />
+
+        </menu>
+    </item>
+
+    <item android:title="Join the cause">
+        <menu>
+            <item
+                android:id="@+id/nav_becomeAvolunteer"
+                android:icon="@drawable/ambasador"
+                android:title="@string/nav_become_a_volunteer" />
+            <item
+                android:id="@+id/nav_referFriend"
+                android:icon="@drawable/referfriend"
+                android:title="@string/nav_refer_friend" />
+        </menu>
+    </item>
+
+
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="@string/nav_settings" />
+            <item
+                android:id="@+id/nav_feedback"
+                android:icon="@drawable/feedback"
+                android:title="@string/nav_feedback" />
+            <item
+                android:id="@+id/nav_ourTeams"
+                android:icon="@drawable/our_team"
+                android:title="@string/nav_our_team" />
+            <item
+                android:id="@+id/nav_about_us"
+                android:icon="@drawable/about_us"
+                android:title="@string/nav_about_us" />
+            <item
+                android:id="@+id/nav_rate_us"
+                android:icon="@drawable/rate_us"
+                android:title="@string/nav_rate_us" />
+            <item
+                android:id="@+id/nav_privacy"
+                android:icon="@drawable/privacy"
+                android:title="@string/nav_privacy" />
+        </menu>
+    </item>
+
+</menu>
