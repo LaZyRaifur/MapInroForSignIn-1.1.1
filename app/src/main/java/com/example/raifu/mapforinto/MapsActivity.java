@@ -36,6 +36,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.onesignal.OneSignal;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -79,6 +80,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         ActionBar actionBar = getActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.RED)); // set your desired color
+
+        // OneSignal Initialization
+
+
+        OneSignal.startInit(this).init();
+//        OneSignal.startInit(this)
+//                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+//                .unsubscribeWhenNotificationsAreDisabled(true)
+//                .init();
     }
 
 
