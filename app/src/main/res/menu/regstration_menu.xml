@@ -12,5 +12,14 @@
         android:id="@+id/satellite_map"
         android:title="@string/satellite_map"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/CustomerId"
+        android:title="@string/Customers"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/DriverId"
+        android:title="@string/Drivers"
+        app:showAsAction="never" />
+
 
 </menu>

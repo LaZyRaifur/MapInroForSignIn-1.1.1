@@ -76,6 +76,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment supportMapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mapFragment);
         supportMapFragment.getMapAsync(this);
+
         findViewById(R.id.currentLocationImageButton).setOnClickListener(clickListener);
 
         ActionBar actionBar = getActionBar();
@@ -84,7 +85,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // OneSignal Initialization
 
 
-        OneSignal.startInit(this).init();
+        //  OneSignal.startInit(this).init();
 //        OneSignal.startInit(this)
 //                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
 //                .unsubscribeWhenNotificationsAreDisabled(true)
@@ -92,15 +93,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -207,37 +200,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        openOptionsMenu();
 //    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.regstration_menu, menu);
-        menu.clear();
-        menu.add(Menu.FIRST, R.id.satellite, 4, "Satellite");
-
-
-//        String get_api_key = new Database_for_Api_key(Activity_Drawer_Dashboard.this).getApi_key();
-        MenuItem item =
-                menu.add(Menu.FIRST, R.id.registration, 3, "Login/Registration");
-        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    //
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//// Inflate the menu items for use in the action bar
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.regstration_menu, menu);
-//        return super.onCreateOptionsMenu(menu);
-////        return true;
-//    }
-//
+    ///07.01.19//
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
 //        getMenuInflater().inflate(R.menu.regstration_menu, menu);
-//        return true;
+//        menu.clear();
+////        menu.add(Menu.FIRST, R.id.satellite, 4, "Satellite");
+////        menu.add(Menu.FIRST, R.id.satellite, 4, "I'm a Customer");
+////        menu.add(Menu.FIRST, R.id.satellite, 4, "I'm a Driver");
+//
+//
+////        String get_api_key = new Database_for_Api_key(Activity_Drawer_Dashboard.this).getApi_key();
+//
+//        MenuItem item =
+//                menu.add(Menu.FIRST, R.id.registration, 3, "Login/Registration");
+//        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+//        return super.onCreateOptionsMenu(menu);
+//
 //    }
+
+    //implement 07.01.19............
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+// Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.regstration_menu, menu);
+        //return super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Change the map type based on the user's selection.
@@ -250,6 +242,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             case R.id.satellite_map:
                 googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                 return true;
+
+            case R.id.CustomerId:
+                Intent CustomerIntent = new Intent(MapsActivity.this, CustomerLoginActivity.class);
+                startActivity(CustomerIntent);
+                return true;
+
+            case R.id.DriverId:
+                Intent DriverIntent = new Intent(MapsActivity.this, DriverLoginActivity.class);
+                startActivity(DriverIntent);
+                return true;
+            // googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
 
             default:
                 return super.onOptionsItemSelected(item);
